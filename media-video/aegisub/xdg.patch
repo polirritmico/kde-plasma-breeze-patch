@@ -53,3 +53,4 @@ index 0541e0d..735691c 100644
  	SetToken("?data", P_DATA);
  	SetToken("?dictionary", "/usr/share/hunspell");
  #else
+
