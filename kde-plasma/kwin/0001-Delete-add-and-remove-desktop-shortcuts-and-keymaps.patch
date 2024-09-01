@@ -1,0 +1,36 @@
+From 2b8ec758c212b0976345f54105b0b690b10b4886 Mon Sep 17 00:00:00 2001
+From: polirritmico <ebray187@gmail.com>
+Date: Sun, 1 Sep 2024 01:43:07 -0400
+Subject: [PATCH] Delete `add` and `remove` desktop shortcuts and keymaps
+
+---
+ src/plugins/overview/qml/main.qml | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/src/plugins/overview/qml/main.qml b/src/plugins/overview/qml/main.qml
+index 604d4cc..c91a120 100644
+--- a/src/plugins/overview/qml/main.qml
++++ b/src/plugins/overview/qml/main.qml
+@@ -185,10 +185,6 @@ FocusScope {
+             } else {
+                 effect.deactivate();
+             }
+-        } else if (event.key === Qt.Key_Plus || event.key === Qt.Key_Equal) {
+-            desktopModel.create(desktopModel.rowCount());
+-        } else if (event.key === Qt.Key_Minus) {
+-            desktopModel.remove(desktopModel.rowCount() - 1);
+         } else if (event.key >= Qt.Key_F1 && event.key <= Qt.Key_F12) {
+             const desktopId = event.key - Qt.Key_F1;
+             if (desktopId < allDesktopHeaps.count) {
+@@ -231,7 +227,7 @@ FocusScope {
+                     effect.activateView(view)
+                 }
+             }
+-        } else if (event.key === Qt.Key_Return || event.key === Qt.Key_Space) {
++        } else if (event.key === Qt.Key_Return) {
+             for (let i = 0; i < allDesktopHeaps.count; i++) {
+                 if (allDesktopHeaps.itemAt(i).current) {
+                     switchTo(allDesktopHeaps.itemAt(i).desktop)
+-- 
+2.44.2
+

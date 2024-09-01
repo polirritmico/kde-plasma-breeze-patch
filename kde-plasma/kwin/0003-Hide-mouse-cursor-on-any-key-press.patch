@@ -1,0 +1,41 @@
+From 3413b277cde7d05e02ba3dab1702d110bd899c4d Mon Sep 17 00:00:00 2001
+From: polirritmico <ebray187@gmail.com>
+Date: Sun, 1 Sep 2024 13:23:57 -0400
+Subject: [PATCH] Hide mouse cursor on any key press
+
+---
+ src/plugins/hidecursor/hidecursor.cpp | 18 +-----------------
+ 1 file changed, 1 insertion(+), 17 deletions(-)
+
+diff --git a/src/plugins/hidecursor/hidecursor.cpp b/src/plugins/hidecursor/hidecursor.cpp
+index 68217d4..efea88b 100644
+--- a/src/plugins/hidecursor/hidecursor.cpp
++++ b/src/plugins/hidecursor/hidecursor.cpp
+@@ -74,23 +74,7 @@ void HideCursorEffect::tabletToolEvent(TabletEvent *event)
+ void HideCursorEffect::keyEvent(KeyEvent *event)
+ {
+     if (m_hideOnTyping && event->type() == QEvent::KeyPress) {
+-        auto key = event->key();
+-        switch (key) {
+-        case Qt::Key_Shift:
+-        case Qt::Key_Control:
+-        case Qt::Key_Meta:
+-        case Qt::Key_Alt:
+-        case Qt::Key_AltGr:
+-        case Qt::Key_Super_L:
+-        case Qt::Key_Super_R:
+-        case Qt::Key_Hyper_L:
+-        case Qt::Key_Hyper_R:
+-        case Qt::Key_Escape:
+-            break;
+-
+-        default:
+-            hideCursor();
+-        }
++        hideCursor();
+     }
+ }
+ 
+-- 
+2.44.2
+
