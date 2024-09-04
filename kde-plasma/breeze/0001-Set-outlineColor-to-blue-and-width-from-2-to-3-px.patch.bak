@@ -1,0 +1,37 @@
+From 05e91fc0d7a10dacb07c4ce5a7af3b7cb955b0ac Mon Sep 17 00:00:00 2001
+From: polirritmico <ebray187@gmail.com>
+Date: Tue, 3 Sep 2024 23:45:21 -0400
+Subject: [PATCH] Set outlineColor to blue and width from 2 to 3 px
+
+---
+ kdecoration/breezedecoration.cpp | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/kdecoration/breezedecoration.cpp b/kdecoration/breezedecoration.cpp
+index 22451a5..448e0e0 100644
+--- a/kdecoration/breezedecoration.cpp
++++ b/kdecoration/breezedecoration.cpp
+@@ -600,9 +600,8 @@ void Decoration::paint(QPainter *painter, const QRect &repaintRegion)
+         painter->restore();
+     }
+     if (outlinesEnabled() && !isMaximized()) {
+-        auto outlineColor = KColorUtils::mix(c->color(c->isActive() ? ColorGroup::Active : ColorGroup::Inactive, ColorRole::Frame),
+-                                             c->palette().text().color(),
+-                                             lookupOutlineIntensity(m_internalSettings->outlineIntensity()));
++        // outlineColor active to blue
++        auto outlineColor = c->isActive() ? QColor(61, 174, 233) : KColorUtils::mix(c->color(ColorGroup::Inactive, ColorRole::Frame), c->palette().text().color(), lookupOutlineIntensity(m_internalSettings->outlineIntensity()));
+ 
+         QRectF outlineRect = rect();
+         qreal cornerSize = m_scaledCornerRadius * 2.0;
+@@ -627,7 +626,7 @@ void Decoration::paint(QPainter *painter, const QRect &repaintRegion)
+ 
+         painter->fillPath(outlinePath.simplified(), Qt::transparent);
+         painter->save();
+-        painter->setPen(QPen(outlineColor, 2));
++        painter->setPen(QPen(outlineColor, 3));
+         painter->setBrush(Qt::NoBrush);
+         painter->setRenderHint(QPainter::Antialiasing);
+         painter->setCompositionMode(QPainter::CompositionMode_SourceAtop);
+-- 
+2.44.2
+
