@@ -1,0 +1,25 @@
+From f08fea9b142a0f1170393f2c5023183fcbe17e51 Mon Sep 17 00:00:00 2001
+From: polirritmico <ebray187@gmail.com>
+Date: Wed, 25 Dec 2024 22:40:25 -0300
+Subject: [PATCH] fix: Change hl to highlight to correct Inspect errors
+
+---
+ runtime/lua/vim/_inspector.lua | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/runtime/lua/vim/_inspector.lua b/runtime/lua/vim/_inspector.lua
+index 55e2ae6..9c894d1 100644
+--- a/runtime/lua/vim/_inspector.lua
++++ b/runtime/lua/vim/_inspector.lua
+@@ -186,7 +186,7 @@ function vim.show_pos(bufnr, row, col, filter)
+         capture,
+         string.format(
+           'priority: %d   language: %s',
+-          capture.metadata.priority or vim.hl.priorities.treesitter,
++          capture.metadata.priority or vim.highlight.priorities.treesitter,
+           capture.lang
+         )
+       )
+-- 
+2.45.2
+

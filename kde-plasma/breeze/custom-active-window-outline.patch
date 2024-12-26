@@ -14,13 +14,4 @@ index 22451a5..448e0e0 100644
  
          QRectF outlineRect = rect();
          qreal cornerSize = m_scaledCornerRadius * 2.0;
-@@ -627,7 +626,7 @@ void Decoration::paint(QPainter *painter, const QRect &repaintRegion)
  
-         painter->fillPath(outlinePath.simplified(), Qt::transparent);
-         painter->save();
--        painter->setPen(QPen(outlineColor, 2));
-+        painter->setPen(QPen(outlineColor, 3));
-         painter->setBrush(Qt::NoBrush);
-         painter->setRenderHint(QPainter::Antialiasing);
-         painter->setCompositionMode(QPainter::CompositionMode_SourceAtop);
-
